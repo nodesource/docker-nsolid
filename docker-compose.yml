@@ -1,24 +1,24 @@
+registry:
+  image: nodesource/nsolid-registry
+  container_name: registry
+  net: "nsolid"
+  ports:
+    - 4001:4001
 proxy:
   image: nodesource/nsolid-proxy
-  links:
-    - registry
+  container_name: proxy
   environment:
     - REGISTRY=registry:4001
     - NODE_DEBUG=nsolid
+  net: "nsolid"
 console:
   image: nodesource/nsolid-console
-  links:
-    - registry
-    - proxy
+  container_name: console
   environment:
     - NODE_DEBUG=nsolid
     - NSOLID_APPNAME=console
     - NSOLID_HUB=registry:4001
-    - nsolid-cli_hub=proxy:9000
-    - NSOLID_SOCKET=
+  net: "nsolid"
+  command: --hub proxy:9000
   ports:
     - 3000:3000
-registry:
-  image: nodesource/nsolid-registry
-  ports:
-    - 4001:4001

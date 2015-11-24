@@ -17,3 +17,8 @@ $DIR/gen-images.sh > $DIR/../templates/images.js
 
 echo "Generating Dockerfiles..."
 $DIR/gen-dockerfiles.js
+
+echo "Running dante..."
+cd $DIR/../
+dante > output.md
+cd $DIR

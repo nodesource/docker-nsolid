@@ -28,6 +28,7 @@ var nsolid =
 
 var footer =
 "ENV NODE_ENV production\n" +
+"RUN echo \"#!/usr/bin/env bash\\nNSOLID_SOCKET=\\$(ip a | grep '172' | awk '{ print \\$2 }' | cut -f 1 -d '/'):0 exec \\$@\" > /bin/start\n" +
 "\n" +
 "ENTRYPOINT [\"nsolid\",\"bin/nsolid-console\"]\n"
 "CMD [\"--interval=1000\"]\n"
