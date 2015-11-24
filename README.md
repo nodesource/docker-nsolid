@@ -1,7 +1,7 @@
 N|Solid Docker Images
 =====================
 
-# Single Host Usage
+## Single Host Usage
 
 ### Your app's Docker image
 
@@ -38,7 +38,7 @@ Once you have this network created, you will need your containers to use it in l
 
 You can run `docker-compose up` to bring up all of the N|Solid components alongside your application.
 
-# Usage
+## Usage
 
 Once you have N|Solid up and running, you have two ways to use the tools.
 
@@ -64,7 +64,7 @@ If you are using straight `docker`, first bring up the nsolid toolset by running
 
 The application should now appear in the console.
 
-# Building
+## Building
 
 The images are automatically generated to allow for version pinning.
 
