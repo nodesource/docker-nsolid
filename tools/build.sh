@@ -15,6 +15,11 @@ rm -rf $DIR/../{nsolid-node,nsolid-console,nsolid-proxy}
 echo "Generating image file..."
 $DIR/gen-images.sh > $DIR/../templates/images.js
 
+echo "Running npm install..."
+cd $DIR
+npm install
+cd ..
+
 echo "Generating Dockerfiles..."
 $DIR/gen-dockerfiles.js
 
