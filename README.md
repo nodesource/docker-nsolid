@@ -1,35 +1,68 @@
 N|Solid Docker Images
 =====================
 
-#WIP
+# Single Host Usage
 
-# Usage
+## Your app's Docker image
 
-We will provide a bundled "all-in-one" `docker-compose.yml` file, which you can use to download and run our images from Docker hub.
+Your app's `Dockerfile` should include the line `FROM nodesource/nsolid`
 
-Currently, this file is a work in progress and requires that you first run the build process.
+## Setting up
 
-After running the build process, run the following:
+> NOTE: Prior to release, these images will need to be built locally to work. This is done using the `./tools/build.sh` script.
+> Refer to the section Local Development below for more information
 
-      $ docker-compose up -d
+## `docker-compose.yml`
+To use these docker images, you will need to use the `docker-compose.yml` file from this repository.
 
-This will bring up all of the docker containers. You can see them, and the ports they are bound to, using:
-
-      $ docker ps
-
-
-To run one of your applications and have it show up in the console, simply:
-
-      $ docker run -it --link dockernsolid_registry_1:registry -e NSOLID_APPNAME=my_service -e NSOLID_HUB=registry:4001 my_service
-
-Where `my_service` is the name of your docker image, and `[registry]` is the name of the docker container that was brought up by `docker-compose`
-
-Alternatively, if you are using your own `docker-compose.yml` file, you can reference our file by naming it `nsolid.yml` and adding the following to your `docker-compose.yml` file:
+More than likely, `nsolid` will be a component of your infrastructure, not the driving force. You will want to download the `docker-compose.yml` file and save it as `nsolid.yml`. Then add the following lines to your project's/infrastructure's `docker-compose.yml` file:
 
       extends:
         file: nsolid.yml
         service: nsolid
 
+## `docker network`
+
+The N|Solid docker images rely on `docker network` to communicate. You will need to create this network and have your containers bind to it when starting.
+
+Start off by running:
+
+      $ docker network create nsolid
+
+Once you have this network created, you will need your containers to use it in liue of the default docker network.
+
+  * If using docker-compose, use the [`net` key](https://docs.docker.com/compose/compose-file/#net).
+  * If using the `docker` cli tool, use the [`--net` flag](https://docs.docker.com/engine/reference/commandline/run/#connect-a-container-to-a-network-net).
+
+## All systems go
+
+You can run `docker-compose up` to bring up all of the N|Solid components alongside your application.
+
+# Usage
+
+Once you have N|Solid up and running, you have two ways to use the tools.
+
+## `docker-compose`
+
+If using `docker-compose`, your app should use the following template:
+
+      myapp:
+        build: .
+        environment:
+          - NSOLID_APPNAME=myapp
+          - NSOLID_HUB=registry:4001
+          - NSOLID_SOCKET=0
+        net: "nsolid"
+
+Assuming N|Solid is running on the `nsolid` network, your app should appear in the console when you run it with `docker-compose up`
+
+## `docker`
+
+If you are using straight `docker`, first bring up the nsolid toolset by running `docker-compose up` in the same directory as nsolid's `docker-compose.yml`. Then run your app with the following:
+
+      docker run --net nsolid -e NSOLID_APPNAME=myapp -e NSOLID_HUB=registry:4001 -e NSOLID_SOCKET=0 myapp
+
+The application should now appear in the console.
 
 # Building
 
@@ -39,4 +72,4 @@ To build them, simply run
 
       $ ./tools/build.sh
 
-This will generate all of the necessary images and run integration tests on them
+This will generate all of the necessary images and run integration tests on them. You must do this before running `docker-compse up`
