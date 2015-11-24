@@ -131,6 +131,12 @@ Run
 
 # Local Development
 
+## Setup
+
+For local dev, you will need to hvae `dante` installed. Simply download a release from the github repo and place it in your path.
+
+https://github.com/wblankenship/dante/releases/tag/1.1.0
+
 The images are automatically generated to allow for version pinning.
 
 To build them, simply run
