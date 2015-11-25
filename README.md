@@ -7,12 +7,13 @@ N|Solid Docker Images
 
 Your app's `Dockerfile` should include the line `FROM nodesource/nsolid`
 
-## Setting up
+## Setup
 
 > NOTE: Prior to release, these images will need to be built locally to work. This is done using the `./tools/build.sh` script.
 > Refer to the section Local Development below for more information
 
-## docker-compose.yml
+## Docker Compose
+
 To use these docker images, you will need to use the `docker-compose.yml` file from this repository.
 
 More than likely, `nsolid` will be a component of your infrastructure, not the driving force. You will want to download the `docker-compose.yml` file and save it as `nsolid.yml`. Then add the following lines to your project's/infrastructure's `docker-compose.yml` file:
@@ -21,7 +22,7 @@ More than likely, `nsolid` will be a component of your infrastructure, not the d
         file: nsolid.yml
         service: nsolid
 
-## docker network
+## Docker Network
 
 The N|Solid docker images rely on `docker network` to communicate. You will need to create this network and have your containers bind to it when starting.
 
@@ -29,14 +30,20 @@ Start off by running:
 
       $ docker network create nsolid
 
-Once you have this network created, you will need your containers to use it in liue of the default docker network.
+Once you have this network created, you will need your containers to use it in lieu of the default docker network.
 
   * If using docker-compose, use the [`net` key](https://docs.docker.com/compose/compose-file/#net).
   * If using the `docker` cli tool, use the [`--net` flag](https://docs.docker.com/engine/reference/commandline/run/#connect-a-container-to-a-network-net).
 
-## All systems go
+## All Systems Go
 
-You can run `docker-compose up` to bring up all of the N|Solid components alongside your application.
+You can run 
+
+```
+docker-compose up
+```
+
+to bring up all of the N|Solid components alongside your application.
 
 # Usage
 
@@ -137,10 +144,18 @@ For local dev, you will need to hvae `dante` installed. Simply download a releas
 
 https://github.com/wblankenship/dante/releases/tag/1.1.0
 
+Or if you are on a Mac and have Homebrew installed,
+
+```
+brew update
+brew install dante
+```
+
 The images are automatically generated to allow for version pinning.
 
 To build them, simply run
 
     $ ./tools/build.sh
 
-This will generate all of the necessary images and run integration tests on them. You must do this before running `docker-compse up`doicker
+This will generate all of the necessary images and run integration tests on them. You must do this before running `docker-compose up`.
+
