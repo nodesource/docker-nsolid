@@ -9,6 +9,13 @@ Your app's `Dockerfile` should include the line `FROM nodesource/nsolid`
 
 ## Setup
 
+Technical Requirements:
+
+- [Docker 1.9](https://github.com/docker/docker/releases/tag/v1.9.0)
+- [Docker Machine 0.5.1](https://github.com/docker/machine/releases/tag/v0.5.1)
+- [Docker Compose 1.51](https://github.com/docker/compose/releases/tag/1.5.1)
+- [Dante 1.1](https://github.com/wblankenship/dante/releases/tag/1.1.0)
+
 > NOTE: Prior to release, these images will need to be built locally to work. This is done using the `./tools/build.sh` script.
 > Refer to the section Local Development below for more information
 
