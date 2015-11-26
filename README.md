@@ -140,16 +140,35 @@ Run
 
 ## Setup
 
-For local dev, you will need to hvae `dante` installed. Simply download a release from the github repo and place it in your path.
+For local dev, you will need to hvae `dante` installed. 
+
+### Installing Dante
+
+Simply download a release from the github repo and place it in your path.
 
 https://github.com/wblankenship/dante/releases/tag/1.1.0
 
-Or if you are on a Mac and have Homebrew installed,
+Or if you are on a Mac let's first rename it..
 
 ```
-brew update
-brew install dante
+mv dante-darwin-amd64 /usr/local/bin/dante
 ```
+
+Make sure `/usr/local/bin/` is in your $PATH
+
+```
+export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
+```
+
+Note, you may need to `chown` to the correct user and group 
+
+For example...
+
+```
+chown your_username:admin /usr/local/bin/dante
+```
+
+### Build Images
 
 The images are automatically generated to allow for version pinning.
 
