@@ -1,104 +1,116 @@
 N|Solid Docker Images
 =====================
 
+# Requirements
+
+* [Docker 1.9 or later](http://docs.docker.com/engine/installation/)
+* [Docker Machine 0.5 or later](http://docs.docker.com/machine/install-machine/)
+* [Docker Compose 1.5 or later](http://docs.docker.com/compose/install/)
+
 # Single Host Usage
 
-## Your app's Docker image
+## Prepare your App's Docker image
 
-Your app's `Dockerfile` should include the line `FROM nodesource/nsolid`
+If your app isn't already in a Docker container, check out the [tutorials on our blog](https://nodesource.com/blog/dockerizing-your-nodejs-applications). These will walk you through getting your application into Docker.
 
-## Setup
+Once you have your application in Docker, you will need to make sure that it is ready to run N|Solid. This means your codebase must work with the LTS release of Node.js. Checkout [upgrade-ready](https://github.com/nodesource/upgrade-ready), a tool that will help you gauge your readiness for the latest version of Node.js.
 
-Technical Requirements:
+Once your code is both Dockerized and ready to run on the latest LTS release of Node.js, simply replace the `FROM` line in your `Dockerfile` with:
 
-- [Docker 1.9](https://github.com/docker/docker/releases/tag/v1.9.0)
-- [Docker Machine 0.5.1](https://github.com/docker/machine/releases/tag/v0.5.1)
-- [Docker Compose 1.51](https://github.com/docker/compose/releases/tag/1.5.1)
-- [Dante 1.1](https://github.com/wblankenship/dante/releases/tag/1.1.0)
+    FROM nodesource/nsolid-node
 
-> NOTE: Prior to release, these images will need to be built locally to work. This is done using the `./tools/build.sh` script.
+> NOTE: Prior to release, these images will need to be built locally to work.
 > Refer to the section Local Development below for more information
 
-## Docker Compose
+## Add nsolid to your project
 
-To use these docker images, you will need to use the `docker-compose.yml` file from this repository.
+Download the `docker-compose.yml` file from [here](https://github.com/nodesource/docker-nsolid/blob/master/docker-compose.yml), and save it in the base directory of your project as `nsolid.yml`.
 
-More than likely, `nsolid` will be a component of your infrastructure, not the driving force. You will want to download the `docker-compose.yml` file and save it as `nsolid.yml`. Then add the following lines to your project's/infrastructure's `docker-compose.yml` file:
+Open your project's `docker-compose.yml` file (or create it), and insert the following lines:
 
-      extends:
-        file: nsolid.yml
-        service: nsolid
+    extends:
+      file: nsolid.yml
+      service: nsolid
 
-## Docker Network
+## Provision remote host
 
-The N|Solid docker images rely on `docker network` to communicate. You will need to create this network and have your containers bind to it when starting.
+> Note: We will assume you are going to use a fresh machine for this tutorial. If you want to run this tutorial on your local host, feel free to skip this section.
+
+We are going to use `docker-machine` to provision a fresh virtualbox machine to run our application.
+
+    docker-machine create -d virtualbox nsolid
+    
+> Note: In addition to Virtualbox, `docker-machine` supports drivers for various cloud providers. View the full list of cloud providers and how to use them with `docker-machine` [here](https://docs.docker.com/machine/drivers/).
+
+Next, we need to tell `docker` to use our new machine. In every terminal window we intend to use `docker` to talk to our new machine with, we need to run the following command:
+
+    eval $(docker-machine env nsolid)
+    
+To verify which machine `docker` is talking to, you can run the following command and look for the asterisc in the `Active` column:
+
+    docker-machine ls
+    
+If you would like to pull back the curtain, and see the magic the `eval` statement above is doing, you can execute the `docker-machine` command without evaluating it like so:
+
+    docker-machine nsolid
+
+## docker network
+
+The N|Solid docker images rely on `docker network` to communicate. This allows the containers to discover eachother and communicate across hosts if necessary. You will need to create this network and have your containers bind to it when starting.
 
 Start off by running:
 
-      $ docker network create nsolid
+      docker network create nsolid
 
-Once you have this network created, you will need your containers to use it in lieu of the default docker network.
+Once you have this network created, you will need your containers to use it in liue of the default docker network.
 
-  * If using docker-compose, use the [`net` key](https://docs.docker.com/compose/compose-file/#net).
-  * If using the `docker` cli tool, use the [`--net` flag](https://docs.docker.com/engine/reference/commandline/run/#connect-a-container-to-a-network-net).
+  * If using docker-compose, use the [`net` key](https://docs.docker.com/compose/compose-file/#net). Simply add `net: nsolid` to your container definitions.
+  * If using the `docker` cli tool, use the [`--net` flag](https://docs.docker.com/engine/reference/commandline/run/#connect-a-container-to-a-network-net). Example `docker run -it --net nsolid my_container`
 
-## All Systems Go
+## All systems go
 
-You can run 
-
-```
-docker-compose up
-```
-
-to bring up all of the N|Solid components alongside your application.
-
-# Usage
-
-Once you have N|Solid up and running, you have two ways to use the tools.
-
-## docker-compose
-
-If using `docker-compose`, your app should use the following template:
-
-      myapp:
-        build: .
-        environment:
-          - NSOLID_APPNAME=myapp
-          - NSOLID_HUB=registry:4001
-          - NSOLID_SOCKET=0
-        net: "nsolid"
-
-Assuming N|Solid is running on the `nsolid` network, your app should appear in the console when you run it with `docker-compose up`
-
-## docker
-
-If you are using straight `docker`, first bring up the nsolid toolset by running `docker-compose up` in the same directory as nsolid's `docker-compose.yml`. Then run your app with the following:
-
-    $ docker run --net nsolid -e NSOLID_APPNAME=myapp -e NSOLID_HUB=registry:4001 -e NSOLID_SOCKET=0 myapp
-
-The application should now appear in the console.
+You can run `docker-compose up` to bring up all of the N|Solid components alongside your application.
 
 # Multi-Host Usage
 
-The N|Solid images use `docker network` which allows you to take the above `docker-compose.yml` instructions and run them transparently on a `docker-swarm` cluster. This section will walk you through provisioning an overlay network using `docker network`, provisioning a `docker-swarm` cluster using `docker-machine`, and running N|Solid on it.
+## Prepare your App's Docker image
+
+If your app isn't already in a Docker container, check out the [tutorials on our blog](https://nodesource.com/blog/dockerizing-your-nodejs-applications). These will walk you through getting your application into Docker.
+
+Once you have your application in Docker, you will need to make sure that it is ready to run N|Solid. This means your codebase must work with the LTS release of Node.js. Checkout [upgrade-ready](https://github.com/nodesource/upgrade-ready), a tool that will help you gauge your readiness for the latest version of Node.js.
+
+Once your code is both Dockerized and ready to run on the latest LTS release of Node.js, simply replace the `FROM` line in your `Dockerfile` with:
+
+    FROM nodesource/nsolid-node
+
+> NOTE: Prior to release, these images will need to be built locally to work.
+> Refer to the section Local Development below for more information
+
+## Add nsolid to your project
+
+Download the `docker-compose.yml` file from [here](https://github.com/nodesource/docker-nsolid/blob/master/docker-compose.yml), and save it in the base directory of your project as `nsolid.yml`.
+
+Open your project's `docker-compose.yml` file (or create it), and insert the following lines:
+
+    extends:
+      file: nsolid.yml
+      service: nsolid
 
 ## Setting up a KV store
 
-An `overlay` network needs a backing key-value store for container discovery. This is where containers publsih their IP address and name for DNS resolution. We are going to use `consul`
+We will be creating an overlay network that will allow all of our Docker containers to communicate across host. This overlay network requires a key-value store.
 
     $ docker-machine create -d virtualbox nsolidkv
 
-> Note, this documentation will be written from the perspective of everything being run in virtualbox machines locally. Simply swapping out the driver for `docker-machine` will allow you to use any infrastructure you like. For more information, consult the [official documentation](https://docs.docker.com/machine/drivers/)
+> Note: In addition to Virtualbox, `docker-machine` supports drivers for various cloud providers. View the full list of cloud providers and how to use them with `docker-machine` [here](https://docs.docker.com/machine/drivers/).
 
-Now we need to setup deploy consul to our newly created machine
+Next we deploy consul to our newly created box:
 
-    $ eval "$(docker-machine env nsolidkv)"
-    $ docker run -d -p 8500:8500 -h consul progrium/consul -server -bootstrap
-    $ eval "$(docker-machine env -u nsolidkv)"
+    eval "$(docker-machine env nsolidkv)"
+    docker run -d -p 8500:8500 -h consul progrium/consul -server -bootstrap
+    eval "$(docker-machine env -u nsolidkv)"
 
-> Note: If you see the error `client is newer than the server` you will need to run `docker-machine upgrade nsolidkv`
-
-> Note: This tutorial assumes you are running a unix style machine. If this assumption does not hold, refer to the [official documentation to translate these commands to the appropriate alternatives for your system.
+> Note: If you see `client is newer than the server` you will need to run `docker-machine upgrade nsolidkv`
 
 ## Provision Swarm Master
 
@@ -137,45 +149,17 @@ We now create an overlay network, that spans our swarm.
     
 ## All systems go!
 
-You are now able to use your swarm master to deploy multi-host docker containers whose Node services are monitored by N|Solid.
+You are now able to use your swarm master to deploy multi-host docker containers whose Node services are monitored by N|Solid. Simply run
 
-Run 
-
-> Note: If you are running this locally pre-launch, after setting the swarm master as your default docker daemon, you need to re-run .the steps in the Local Development section below. This will build the images in your swarm and make them available, so that they don't need to be pulled from the Docker public registry.
+    docker-compose up
 
 # Local Development
 
 ## Setup
 
-For local dev, you will need to hvae `dante` installed. 
-
-### Installing Dante
-
-Simply download a release from the github repo and place it in your path.
+For local dev, you will need to hvae `dante` installed. Download a release from the github repo and place it in your path.
 
 https://github.com/wblankenship/dante/releases/tag/1.1.0
-
-Or if you are on a Mac let's first rename it..
-
-```
-mv dante-darwin-amd64 /usr/local/bin/dante
-```
-
-Make sure `/usr/local/bin/` is in your $PATH
-
-```
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-```
-
-Note, you may need to `chown` to the correct user and group 
-
-For example...
-
-```
-chown your_username:admin /usr/local/bin/dante
-```
-
-### Build Images
 
 The images are automatically generated to allow for version pinning.
 
@@ -183,5 +167,4 @@ To build them, simply run
 
     $ ./tools/build.sh
 
-This will generate all of the necessary images and run integration tests on them. You must do this before running `docker-compose up`.
-
+This will generate all of the necessary images and run integration tests on them. You must do this before running `docker-compse up`
