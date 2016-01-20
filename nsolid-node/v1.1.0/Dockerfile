@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM debian:stable
 MAINTAINER William Blankenship <wblankenship@nodesource.com>
 
 
@@ -18,6 +18,10 @@ RUN curl https://nsolid-download.nodesource.com/download/nsolid-node/release/v1.
 RUN apt-get update \
  && apt-get upgrade -y --force-yes \
  && rm -rf /var/lib/apt/lists/*;
+
+RUN echo "#!/usr/bin/env bash\nuntil grep \"eth0\" 2>&1 > /dev/null <<< \"\$(NSOLID_SOCKET='' NSOLID_HUB='' nsolid -p 'console.log(require(\"os\").networkInterfaces())')\" ; do sleep .05; done; exec \"\$@\"" >> /bin/wrap_nsolid && chmod +x /bin/wrap_nsolid
+
+ENTRYPOINT ["wrap_nsolid"]
 
 ENV NODE_ENV production
 

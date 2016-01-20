@@ -13,7 +13,7 @@ RUN apt-get update \
       python-all \
       rlwrap \
  && rm -rf /var/lib/apt/lists/*;
-RUN curl https://nsolid-download.nodesource.com/download/nsolid-node/release/v1.0.0/nsolid-v1.0.0-linux-x64.tar.xz | tar -xJC / --strip-components 1
+RUN curl https://nsolid-download.nodesource.com/download/nsolid-node/release/v1.2.0/nsolid-v1.2.0-linux-x64.tar.xz | tar -xJC / --strip-components 1
 
 RUN apt-get update \
  && apt-get upgrade -y --force-yes \
