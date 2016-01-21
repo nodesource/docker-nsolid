@@ -30,13 +30,9 @@ Once your code is both Dockerized and ready to run on the latest LTS release of 
 
 ## Add nsolid to your project
 
-Download the `docker-compose.yml` file from [here](https://github.com/nodesource/docker-nsolid/blob/master/docker-compose.yml), and save it in the base directory of your project as `nsolid.yml`.
+Download the `docker-compose.yml` file from [here](https://github.com/nodesource/docker-nsolid/blob/master/docker-compose.yml), and save it in the base directory of your project as `nsolid.yml`. Assuming you already have a `docker-compose.yml` file, you can then start your application with:
 
-Open your project's `docker-compose.yml` file (or create it), and insert the following lines:
-
-    extends:
-      file: nsolid.yml
-      service: nsolid
+    docker-compose -f nsolid.yml -f docker-compose.yml up
 
 ## Provision remote host
 

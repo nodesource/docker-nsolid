@@ -26,4 +26,5 @@ $DIR/gen-dockerfiles.js
 echo "Running dante..."
 cd $DIR/../
 dante test -r 2 > output.md
+dante push -r 2 > push.md
 cd $DIR
