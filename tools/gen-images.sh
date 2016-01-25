@@ -27,7 +27,7 @@ getPackages() {
     elif [ $1 == "nsolid-console" ]; then
       package="nsolid-console-${version}-linux-x64.tar.gz"
     fi
-    url="https://nsolid-download.nodesource.com/download/$1/${type}/${version}/${package}"
+    url="{url:\"https://nsolid-download.nodesource.com/download/$1/${type}/${version}/${package}\",sha256:\"https://nsolid-download.nodesource.com/download/$1/${type}/${version}/SHASUMS256.txt.asc\"}"
     echo $url
   done
 }
@@ -41,7 +41,7 @@ products=(
 for product in ${products[@]}; do
   urls=($(getPackages $product))
   for url in ${urls[@]}; do
-    FILE="$FILE\nimages[\"$product\"][\"$(echo $url | cut -d "/" -f 7)\"] = {url:\"$url\"}"
+    FILE="$FILE\nimages[\"$product\"][\"$(echo $url | cut -d "/" -f 7)\"] = $url"
   done
 done
 

@@ -4,10 +4,11 @@ var funcs = require('./funcs.js')
 module.exports = function (product, version) {
   var self = images[product][version]
   var url = self.url
+  var sha256 = self.sha256
   if (!url) throw new Error('url not defined for ' + product + ' ' + version)
   var contents = header +
     packages +
-    funcs.replace(nsolid, {url: url}) +
+    funcs.replace(nsolid, {url: url, sha256: sha256}) +
     update +
     wrapper +
     footer
@@ -16,7 +17,7 @@ module.exports = function (product, version) {
 }
 
 var header =
-'FROM debian:stable\n' +
+'FROM ubuntu:trusty\n' +
   'MAINTAINER William Blankenship <wblankenship@nodesource.com>\n' +
   '\n' +
   '\n'
@@ -32,10 +33,13 @@ var packages =
   '      lsb-release \\\n' +
   '      python-all \\\n' +
   '      rlwrap \\\n' +
-  ' && rm -rf /var/lib/apt/lists/*;\n'
+  '      wget \\\n' +
+  ' && rm -rf /var/lib/apt/lists/*;\n\n'
 
 var nsolid =
-'RUN curl {{url}} | tar -xJC / --strip-components 1\n' +
+'RUN wget {{url}} \\\n' +
+  ' && wget {{sha256}} \\\n' +
+  ' && tar -xJC / --strip-components 1 -f *.tar.xz\n\n' +
   '\n'
 
 var update =

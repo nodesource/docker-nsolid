@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM ubuntu:trusty
 MAINTAINER William Blankenship <wblankenship@nodesource.com>
 
 
@@ -12,8 +12,13 @@ RUN apt-get update \
       lsb-release \
       python-all \
       rlwrap \
+      wget \
  && rm -rf /var/lib/apt/lists/*;
-RUN curl https://nsolid-download.nodesource.com/download/nsolid-node/release/v1.0.0/nsolid-v1.0.0-linux-x64.tar.xz | tar -xJC / --strip-components 1
+
+RUN wget https://nsolid-download.nodesource.com/download/nsolid-node/release/v1.0.0/nsolid-v1.0.0-linux-x64.tar.xz \
+ && wget https://nsolid-download.nodesource.com/download/nsolid-node/release/v1.0.0/SHASUMS256.txt.asc \
+ && tar -xJC / --strip-components 1 -f *.tar.xz
+
 
 RUN apt-get update \
  && apt-get upgrade -y --force-yes \
