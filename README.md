@@ -54,7 +54,7 @@ To verify which machine `docker` is talking to, you can run the following comman
 
 If you would like to pull back the curtain, and see the magic the `eval` statement above is doing, you can execute the `docker-machine` command without evaluating it like so:
 
-    docker-machine nsolid
+    docker-machine env nsolid
 
 ## docker network
 
