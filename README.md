@@ -266,3 +266,44 @@ To build them, simply run
     $ ./tools/build.sh
 
 This will generate all of the necessary images and run integration tests on them. You must do this before running `docker-compse up`
+
+
+# Contributing
+
+To submit a bug report, please create an [issue at GitHub][https://github.com/nodesource/docker-nsolid/issues/new].
+
+If you'd like to contribute code to this project, please read the
+[CONTRIBUTING.md][https://github.com/nodesource/docker-nsolid/blob/master/CONTRIBUTING.md] document.
+
+# Authors and Contributors
+
+<table><tbody>
+  <tr>
+    <th align="left">William Blankenship</th>
+    <td><a href="https://github.com/retrohacker">GitHub/retrohacker</a></td>
+    <td><a href="https://twitter.com/retrohack3r">Twitter/@retrohack3r</a></td>
+  </tr>
+  <tr>
+    <th align="left">Daniel Aristizabal</th>
+    <td><a href="https://github.com/cronopio">GitHub/cronopio</a></td>
+    <td><a href="https://twitter.com/cronopio2">Twitter/@cronopio2</a></td>
+  </tr>
+  <tr>
+    <th align="left">Joe McCann</th>
+    <td><a href="https://github.com/joemccann">GitHub/joemccann</a></td>
+    <td><a href="https://twitter.com/joemccann">Twitter/@joemccann</a></td>
+  </tr>
+  <tr>
+    <th align="left">Patrick Mueller</th>
+    <td><a href="https://github.com/pmuellr">GitHub/pmuellr</a></td>
+    <td><a href="https://twitter.com/pmuellr">Twitter/@pmuellr</a></td>
+  </tr>
+</tbody></table>
+
+# License & Copyright
+
+**docker-nsolid** is Copyright (c) 2016 NodeSource and licensed under the
+MIT license. All rights not explicitly granted in the MIT license are reserved.
+See the included [LICENSE.md][https://github.com/nodesource/docker-node/blob/master/LICENSE.md] file for more details.
+
+The projects contained within the **docker-nsolid** images maintain their own Licenses.
