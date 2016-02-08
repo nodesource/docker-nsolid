@@ -1,0 +1,17 @@
+images:
+  - name: "nodesource/nsolid:v1.2.0"
+    path: "./nsolid/v1.2.0"
+    test: ["./tests/pgp","./tests/nsolid-node","./tests/npm"]
+    alias: "nodesource/nsolid:latest"
+  - name: "nodesource/nsolid-console:v1.4.4"
+    path: "./nsolid-console/v1.4.4"
+    test: ["./tests/pgp"]
+    alias: "nodesource/nsolid-console:latest"
+  - name: "nodesource/nsolid-hub:v3.4.2"
+    path: "./nsolid-hub/v3.4.2"
+    test: ["./tests/pgp"]
+    alias: "nodesource/nsolid-hub:latest"
+  - name: "nodesource/nsolid-registry:latest"
+    path: "./nsolid-registry"
+  - name: "nodesource/nsolid-cli:latest"
+    path: "./nsolid-cli"
