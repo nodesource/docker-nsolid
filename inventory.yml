@@ -2,6 +2,9 @@ images:
   - name: "nodesource/nsolid:v1.2.0"
     path: "./nsolid/v1.2.0"
     test: ["./tests/pgp","./tests/nsolid-node","./tests/npm"]
+  - name: "nodesource/nsolid:v1.2.1"
+    path: "./nsolid/v1.2.1"
+    test: ["./tests/pgp","./tests/nsolid-node","./tests/npm"]
     alias: "nodesource/nsolid:latest"
   - name: "nodesource/nsolid-console:v1.4.4"
     path: "./nsolid-console/v1.4.4"

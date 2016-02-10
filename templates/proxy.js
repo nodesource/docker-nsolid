@@ -14,7 +14,7 @@ module.exports = function (product, version) {
 }
 
 var header =
-'FROM nodesource/nsolid-node:latest\n' +
+'FROM nodesource/nsolid:latest\n' +
   'MAINTAINER William Blankenship <wblankenship@nodesource.com>\n' +
   '\n' +
   '\n'
