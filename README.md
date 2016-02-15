@@ -31,10 +31,10 @@ Occassionally, steps will need to be re-run. When this happens, you may see extr
 
 # Contributing
 
-To submit a bug report, please create an [issue at GitHub][https://github.com/nodesource/docker-nsolid/issues/new].
+To submit a bug report, please create an [issue at GitHub](https://github.com/nodesource/docker-nsolid/issues/new).
 
 If you'd like to contribute code to this project, please read the
-[CONTRIBUTING.md][https://github.com/nodesource/docker-nsolid/blob/master/CONTRIBUTING.md] document. It contains a breif overview of this repo.
+[CONTRIBUTING.md](https://github.com/nodesource/docker-nsolid/blob/master/CONTRIBUTING.md) document. It contains a breif overview of this repo.
 
 # Authors and Contributors
 
@@ -65,6 +65,6 @@ If you'd like to contribute code to this project, please read the
 
 **docker-nsolid** is Copyright (c) 2016 NodeSource and licensed under the
 MIT license. All rights not explicitly granted in the MIT license are reserved.
-See the included [LICENSE.md][https://github.com/nodesource/docker-node/blob/master/LICENSE.md] file for more details.
+See the included [LICENSE.md](https://github.com/nodesource/docker-node/blob/master/LICENSE.md) file for more details.
 
 The projects contained within the **docker-nsolid** images maintain their own Licenses.
