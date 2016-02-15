@@ -23,7 +23,7 @@ console:
   ports:
     - 3000:3000
 app:
-  image: nodesource/nsolid-node
+  image: nodesource/nsolid
   environment:
     - NODE_DEBUG=nsolid
     - NSOLID_APPNAME=in_docker
