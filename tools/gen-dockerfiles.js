@@ -40,7 +40,8 @@ for (var product in images) {
 }
 
 inventory += '\n  - name: "nodesource/nsolid-registry:latest"' +
-  '\n    path: "./nsolid-registry"'
+  '\n    path: "./nsolid-registry"' +
+  '\n    test: "./tests/etcd-ports"'
 
 inventory += '\n  - name: "nodesource/nsolid-cli:latest"' +
   '\n    path: "./nsolid-cli"'

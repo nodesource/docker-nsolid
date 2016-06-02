@@ -31,5 +31,6 @@ images:
     alias: "nodesource/nsolid-hub:latest"
   - name: "nodesource/nsolid-registry:latest"
     path: "./nsolid-registry"
+    test: "./tests/etcd-ports"
   - name: "nodesource/nsolid-cli:latest"
     path: "./nsolid-cli"
