@@ -15,7 +15,7 @@ This repository is used to build and push the following 5 images to the Docker H
 * [nodesource/nsolid-registry](https://hub.docker.com/r/nodesource/nsolid-registry)
 * [nodesource/nsolid-cli](https://hub.docker.com/r/nodesource/nsolid-cli)
 
-If you are looking for documentation on how to use these images, checkout our the official [docs](docs.nodesource.com)!
+If you are looking for documentation on how to use these images, checkout our the official [docs](https://docs.nodesource.com)!
 
 # Build Logs
 
