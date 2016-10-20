@@ -1,14 +1,12 @@
-registry:
-  image: nodesource/nsolid-registry
-  container_name: registry
-  net: "nsolid"
+storage:
+  image: nodesource/nsolid-storage
+  container_name: storage
   ports:
-    - 4001:4001
-proxy:
-  image: nodesource/nsolid-hub
-  container_name: hub
+    - 4000:4000
+    - 9001:9001
+    - 9002:9002
+    - 9003:9003
   environment:
-    - REGISTRY=registry:4001
     - NODE_DEBUG=nsolid
   net: "nsolid"
 console:
@@ -16,15 +14,15 @@ console:
   container_name: console
   environment:
     - NODE_DEBUG=nsolid
-    - NSOLID_APPNAME=console
-    - NSOLID_HUB=registry:4001
   net: "nsolid"
-  command: --hub hub:9000
+  command:
+    - "--storageUrl"
+    - "https://storage:4000"
   ports:
     - 3000:3000
 app:
-  image: nodesource/nsolid
+  image: nodesource/nsolid:argon
   environment:
     - NODE_DEBUG=nsolid
     - NSOLID_APPNAME=in_docker
-    - NSOLID_HUB=registry:4001
+    - NSOLID_COMMAND=storage:9001
