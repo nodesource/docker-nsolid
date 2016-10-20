@@ -14,10 +14,8 @@ console:
   container_name: console
   environment:
     - NODE_DEBUG=nsolid
+    - NSOLID_CONSOLE_STORAGE_URL=https://storage:4000
   net: "nsolid"
-  command:
-    - "--storageUrl"
-    - "https://storage:4000"
   ports:
     - 3000:3000
 app:
