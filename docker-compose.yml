@@ -21,7 +21,6 @@ services:
     ports:
       - 3000:3000
   # app:
-  #   net: "nsolid"
   #   image: nodesource/nsolid:argon
   #   environment:
   #     - NODE_DEBUG=nsolid
