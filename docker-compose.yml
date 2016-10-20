@@ -19,8 +19,11 @@ console:
   ports:
     - 3000:3000
 app:
+  net: "nsolid"
   image: nodesource/nsolid:argon
   environment:
     - NODE_DEBUG=nsolid
     - NSOLID_APPNAME=in_docker
     - NSOLID_COMMAND=storage:9001
+    - NSOLID_DATA=storage:9002
+    - NSOLID_BULK=storage:9003
