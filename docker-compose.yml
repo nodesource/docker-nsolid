@@ -21,7 +21,7 @@ services:
     ports:
       - 3000:3000
   # app:
-  #   image: nodesource/nsolid:argon
+  #   image: nodesource/nsolid:boron-2.0.0
   #   environment:
   #     - NODE_DEBUG=nsolid
   #     - NSOLID_APPNAME=in_docker
