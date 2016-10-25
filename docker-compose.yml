@@ -1,30 +1,30 @@
-registry:
-  image: nodesource/nsolid-registry
-  container_name: registry
-  net: "nsolid"
-  ports:
-    - 4001:4001
-proxy:
-  image: nodesource/nsolid-hub
-  container_name: hub
-  environment:
-    - REGISTRY=registry:4001
-    - NODE_DEBUG=nsolid
-  net: "nsolid"
-console:
-  image: nodesource/nsolid-console
-  container_name: console
-  environment:
-    - NODE_DEBUG=nsolid
-    - NSOLID_APPNAME=console
-    - NSOLID_HUB=registry:4001
-  net: "nsolid"
-  command: --hub hub:9000
-  ports:
-    - 3000:3000
-app:
-  image: nodesource/nsolid
-  environment:
-    - NODE_DEBUG=nsolid
-    - NSOLID_APPNAME=in_docker
-    - NSOLID_HUB=registry:4001
+version: "2"
+services:
+  storage:
+    image: nodesource/nsolid-storage:1.0.0
+    container_name: nsolid.storage
+    ports:
+      - 4000:4000
+      - 9001:9001
+      - 9002:9002
+      - 9003:9003
+    environment:
+      - NODE_DEBUG=nsolid
+  console:
+    image: nodesource/nsolid-console:2.0.0
+    container_name: nsolid.console
+    environment:
+      - NODE_DEBUG=nsolid
+      - NSOLID_CONSOLE_STORAGE_URL=https://storage:4000
+    links:
+      - storage
+    ports:
+      - 3000:3000
+  # app:
+  #   image: nodesource/nsolid:boron-2.0.0
+  #   environment:
+  #     - NODE_DEBUG=nsolid
+  #     - NSOLID_APPNAME=in_docker
+  #     - NSOLID_COMMAND=storage:9001
+  #     - NSOLID_DATA=storage:9002
+  #     - NSOLID_BULK=storage:9003
