@@ -7,27 +7,33 @@ Welcome to the home for the source code of the N|Solid Docker Images!
 
 # Images
 
-This repository is used to build and push the following 5 images to the Docker Hub:
+This repository is used to build and push the following 4 images to the Docker Hub:
 
 * [nodesource/nsolid](https://hub.docker.com/r/nodesource/nsolid)
-* [nodesource/nsolid-hub](https://hub.docker.com/r/nodesource/nsolid-hub)
 * [nodesource/nsolid-console](https://hub.docker.com/r/nodesource/nsolid-console)
-* [nodesource/nsolid-registry](https://hub.docker.com/r/nodesource/nsolid-registry)
+* [nodesource/nsolid-storage](https://hub.docker.com/r/nodesource/nsolid-storage)
 * [nodesource/nsolid-cli](https://hub.docker.com/r/nodesource/nsolid-cli)
 
 If you are looking for documentation on how to use these images, checkout our the official [docs](https://docs.nodesource.com)!
 
-# Build Logs
+### Building Images
 
-This repository also houses the Build Logs for the N|Solid Images listed above.
+```bash
+NSOLID_VERSION=2.0.1 make build 
+```
 
-They can be found in [./logs](./logs), and are labeled by date. There are usually 3 log files generated:
+### Publishing Images
 
-* `base.md` - The log generated from building the base images
-* `test.md` - The log generated from building the final images that ship to the Docker Hub, along with the tests built on top of those images.
-* `push.md` - The log of the actual push to the Docker Hub.
+```bash
+DOCKER_REGISTRY=username NSOLID_VERSION=2.0.1 make publish
+```
 
-Occassionally, steps will need to be re-run. When this happens, you may see extra files in the log directory.
+### Cleaning up
+
+```bash
+NSOLID_VERSION=2.0.1 make clean # removes download directories `nsolid-bundle-*`
+NSOLID_VERSION=2.0.1 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
+```
 
 # Contributing
 
