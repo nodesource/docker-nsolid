@@ -1,24 +1,21 @@
-.SILENT:
-help:
-	echo
-	echo "NodeSource Docker N|Solid Make commands"
-	echo
-	echo "  Commands: "
-	echo
-	echo "    help  - Show this message"
-	echo "    build - Build and test the NodeSource Docker images and the push to the Registry"
-	echo "    deps  - List the dependencies of this repo and check if they are installed"
+.PHONY: clean cleanall download build publish
 
-install:
-	npm install
+ifndef NSOLID_VERSION
+$(error NSOLID_VERSION is not set. Use: `export NSOLID_VERSION=<VERSION_NUMBER>`)
+endif
 
-build: install
-	./tools/build.sh
+clean:
+	rm -rf nsolid-bundle-*
 
-deps:
-	echo "  Dependencies: "
-	echo
-	echo "    * docker $(shell which docker > /dev/null || echo '- \033[31mNOT INSTALLED\033[37m')"
-	echo "    * dante $(shell which dante > /dev/null || echo '- \033[31mNOT INSTALLED\033[37m')"
-	echo "    * node $(shell which node > /dev/null || echo '- \033[31mNOT INSTALLED\033[37m')"
-	echo "    * npm $(shell which npm > /dev/null || echo '- \033[31mNOT INSTALLED\033[37m')"
+cleanall: clean
+	docker rmi $$(docker images --filter "label=nodesource=nsolid" -q) -f
+
+download: clean
+	mkdir nsolid-bundle-${NSOLID_VERSION}
+	node scripts/download.js
+
+build: download
+	scripts/build.sh
+
+publish:
+	scripts/publish.sh
