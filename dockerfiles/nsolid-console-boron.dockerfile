@@ -5,10 +5,17 @@ FROM nodesource/nsolid:boron
 MAINTAINER NodeSource <https://nodesource.com/>
 
 # Add and unpack the console tarball
-COPY ./nsolid-bundle*/nsolid-console*.tar.gz .
+COPY ./nsolid-bundle-*/nsolid-console*.tar.gz .
 
-RUN mkdir /usr/src/app \
- && tar -xzC /usr/src/app --strip-components 1 -f nsolid-console*.tar.gz
+RUN groupadd -r nsolid \
+ && useradd -m -r -g nsolid nsolid \
+ && mkdir /usr/src/app \
+ && tar -xzC /usr/src/app --strip-components 1 -f nsolid-console*.tar.gz \
+ && chown -R nsolid:root /usr/src/app \
+ && chmod -R 0770 /usr/src/app \
+ && rm nsolid-console*.tar.gz
+
+USER nsolid
 
 WORKDIR /usr/src/app
 

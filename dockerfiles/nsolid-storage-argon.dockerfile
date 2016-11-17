@@ -7,12 +7,21 @@ MAINTAINER NodeSource <https://nodesource.com/>
 # Add and unpack the proxy tarball
 COPY ./nsolid-bundle-*/nsolid-storage*.tar.gz .
 
-# Install the N|Solid proxy
-RUN mkdir /usr/src/app \
- && tar -xzC /usr/src/app --strip-components 1 -f nsolid-storage*.tar.gz
+# Install N|Solid Storage
+RUN groupadd -r nsolid \
+ && useradd -m -r -g nsolid nsolid \
+ && mkdir /usr/src/app \
+ && tar -xzC /usr/src/app --strip-components 1 -f nsolid-storage*.tar.gz \
+ && chown -R nsolid:root /usr/src/app \
+ && chmod -R 0770 /usr/src/app \
+ && rm nsolid-storage*.tar.gz
 
 # Artifacts & Settings Storage
-RUN mkdir -p /var/lib/nsolid/storage
+RUN mkdir -p /var/lib/nsolid/storage \
+ && chown -R nsolid:root /var/lib/nsolid/storage \
+ && chmod -R 0770 /var/lib/nsolid/storage 
+
+USER nsolid
 
 WORKDIR /usr/src/app
 

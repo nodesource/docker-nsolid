@@ -4,5 +4,10 @@
 FROM nodesource/nsolid:argon
 MAINTAINER NodeSource <https://nodesource.com/>
 
+RUN groupadd -r nsolid \
+   && useradd -m -r -g nsolid nsolid
+
+USER nsolid
+
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--", "nsolid-cli"]
 CMD ["-h"]
