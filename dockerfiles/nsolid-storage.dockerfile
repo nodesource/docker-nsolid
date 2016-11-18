@@ -1,0 +1,56 @@
+FROM debian:jessie-slim
+MAINTAINER NodeSource <https://nodesource.com/>
+
+ARG NODEJS_LTS=boron
+
+WORKDIR /
+
+# Get Dependencies
+COPY ./nsolid-bundle-*/*${NODEJS_LTS}-linux-x64*.tar.gz .
+COPY ./nsolid-bundle-*/nsolid-storage*.tar.gz .
+ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
+
+RUN groupadd -r nsolid \
+&& useradd -m -r -g nsolid nsolid \
+
+# Updates & Upgrades
+&& apt-get update \
+&& apt-get upgrade -y --force-yes \
+
+# Remove package cache lists
+&& rm -rf /var/lib/apt/lists/* \
+
+# Install runtime
+&& tar --strip-components 1 -xf nsolid*-${NODEJS_LTS}-linux*.tar.gz \
+&& rm nsolid*-${NODEJS_LTS}-linux*.tar.gz \
+
+# dumb-init
+&& chmod +x /usr/local/bin/dumb-init \
+
+# Storage
+&& mkdir -p /usr/src/app \
+&& tar -xzC /usr/src/app --strip-components 1 -f nsolid-storage*.tar.gz \
+
+# Cleanup
+&& rm nsolid-storage*.tar.gz \
+&& rm -rf /usr/src/app/tsdb/darwin-x \
+&& rm /usr/src/app/tsdb/linux-x64/influx \
+
+# Permissions
+&& chown -R nsolid:root /usr/src/app \
+&& chmod -R 0770 /usr/src/app \
+
+# Artifacts & Settings Storage
+&& mkdir -p /var/lib/nsolid/storage \
+&& chown -R nsolid:root /var/lib/nsolid/storage \
+&& chmod -R 0770 /var/lib/nsolid/storage;
+
+USER nsolid
+
+WORKDIR /usr/src/app
+
+ENV NODE_ENV production
+ENV NSOLID_STORAGE_DATA_DIR /var/lib/nsolid/storage/data
+ENV NSOLID_STORAGE_LOGS_INFLUX /var/lib/nsolid/storage/influxdb.log
+
+ENTRYPOINT ["/usr/local/bin/dumb-init", "--", "nsolid", "nsolid-storage.js"]

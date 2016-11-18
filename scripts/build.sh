@@ -1,25 +1,26 @@
 #!/bin/bash -ex
 
-# Base Images
+declare -a versions=("argon" "boron")
+declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
 
-docker build --no-cache --label nodesource=nsolid --tag nodesource/nsolid:argon --file=./dockerfiles/nsolid-argon.dockerfile .
+filepath="./dockerfiles"
 
-docker build --no-cache --label nodesource=nsolid --tag nodesource/nsolid:boron --file=./dockerfiles/nsolid-boron.dockerfile .
+if [ "$BUILD_ALPINE" == "1" ]; then 
+  filepath="$filepath/alpine" 
+fi
 
-# Console
+for lts in "${versions[@]}"
+do
+  for img in "${images[@]}"
+  do
+    [[ $BUILD_ALPINE = "1" ]] && tag="$lts-alpine" || tag=$lts
 
-docker build --no-cache --label nodesource=nsolid --tag nodesource/nsolid-console:argon --file=./dockerfiles/nsolid-console-argon.dockerfile .
-
-docker build --no-cache --label nodesource=nsolid --tag nodesource/nsolid-console:boron --file=./dockerfiles/nsolid-console-boron.dockerfile .
-
-# Storage
-
-docker build --no-cache --label nodesource=nsolid --tag nodesource/nsolid-storage:argon --file=./dockerfiles/nsolid-storage-argon.dockerfile .
-
-docker build --no-cache --label nodesource=nsolid --tag nodesource/nsolid-storage:boron --file=./dockerfiles/nsolid-storage-boron.dockerfile .
-
-# CLI
-
-docker build --no-cache --label nodesource=nsolid --tag nodesource/nsolid-cli:argon --file=./dockerfiles/nsolid-cli-argon.dockerfile .
-
-docker build --no-cache --label nodesource=nsolid --tag nodesource/nsolid-cli:boron --file=./dockerfiles/nsolid-cli-boron.dockerfile .
+    docker build \
+        --no-cache \
+        --label nodesource=nsolid \
+        --tag nodesource/$img:$tag \
+        --build-arg NODEJS_LTS=$lts \
+        --file=$filepath/$img.dockerfile \
+        .
+  done
+done
