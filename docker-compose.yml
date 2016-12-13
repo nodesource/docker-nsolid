@@ -1,7 +1,7 @@
 version: "2"
 services:
   storage:
-    image: nodesource/nsolid-storage:boron-2.0.1
+    image: nodesource/nsolid-storage:boron
     container_name: nsolid.storage
     ports:
       - 4000:4000
@@ -11,7 +11,7 @@ services:
     environment:
       - NODE_DEBUG=nsolid
   console:
-    image: nodesource/nsolid-console:boron-2.0.1
+    image: nodesource/nsolid-console:boron
     container_name: nsolid.console
     environment:
       - NODE_DEBUG=nsolid
@@ -19,9 +19,9 @@ services:
     links:
       - storage
     ports:
-      - 3000:3000
+      - 6753:6753
   # app:
-  #   image: nodesource/nsolid:boron-2.0.1
+  #   image: nodesource/nsolid:boron
   #   environment:
   #     - NODE_DEBUG=nsolid
   #     - NSOLID_APPNAME=in_docker
