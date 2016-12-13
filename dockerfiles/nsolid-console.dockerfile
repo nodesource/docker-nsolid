@@ -6,8 +6,8 @@ ARG NODEJS_LTS=boron
 WORKDIR /
 
 # Get Dependencies
-COPY ./nsolid-bundle-*/*${NODEJS_LTS}-linux-x64*.tar.gz .
-COPY ./nsolid-bundle-*/nsolid-console*.tar.gz .
+COPY ./nsolid-bundle-${NSOLID_VERSION}/nsolid-v${NSOLID_VERSION}-${NODEJS_LTS}-linux-x64.tar.gz .
+COPY ./nsolid-bundle-${NSOLID_VERSION}/nsolid-console*.tar.gz .
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
 
 RUN groupadd -r nsolid \
@@ -41,5 +41,7 @@ USER nsolid
 WORKDIR /usr/src/app
 
 ENV NODE_ENV production
+
+EXPOSE 6753
 
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--", "nsolid", "bin/nsolid-console"]

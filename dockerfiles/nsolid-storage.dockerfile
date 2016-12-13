@@ -2,12 +2,20 @@ FROM debian:jessie-slim
 MAINTAINER NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=boron
+ARG NSOLID_VERSION
+
+LABEL vendor="NodeSource" \
+      product="N|Solid" \
+      version=$NSOLID_VERSION \
+      nodejs=$NODEJS_LTS \
+      env="Production" \
+      date=${date}
 
 WORKDIR /
 
 # Get Dependencies
-COPY ./nsolid-bundle-*/*${NODEJS_LTS}-linux-x64*.tar.gz .
-COPY ./nsolid-bundle-*/nsolid-storage*.tar.gz .
+COPY ./nsolid-bundle-${NSOLID_VERSION}/nsolid-v${NSOLID_VERSION}-${NODEJS_LTS}-linux-x64.tar.gz .
+COPY ./nsolid-bundle-${NSOLID_VERSION}/nsolid-storage-v*.tar.gz .
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
 
 RUN groupadd -r nsolid \
@@ -52,5 +60,7 @@ WORKDIR /usr/src/app
 ENV NODE_ENV production
 ENV NSOLID_STORAGE_DATA_DIR /var/lib/nsolid/storage/data
 ENV NSOLID_STORAGE_LOGS_INFLUX /var/lib/nsolid/storage/influxdb.log
+
+EXPOSE 4000 9001 9002 9003
 
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--", "nsolid", "nsolid-storage.js"]
