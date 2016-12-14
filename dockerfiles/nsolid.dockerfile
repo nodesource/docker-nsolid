@@ -2,6 +2,14 @@ FROM ubuntu:trusty
 MAINTAINER NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=boron
+ARG NSOLID_VERSION
+ARG BUILD_TIME
+
+LABEL vendor="NodeSource" \
+      product="N|Solid" \
+      version=$NSOLID_VERSION \
+      nodejs=$NODEJS_LTS \
+      date=$BUILD_TIME
 
 WORKDIR /
 

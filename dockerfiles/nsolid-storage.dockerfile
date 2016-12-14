@@ -3,13 +3,14 @@ MAINTAINER NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=boron
 ARG NSOLID_VERSION
+ARG BUILD_TIME
 
 LABEL vendor="NodeSource" \
-      product="N|Solid" \
+      product="N|Solid - Storage" \
       version=$NSOLID_VERSION \
       nodejs=$NODEJS_LTS \
       env="Production" \
-      date=${date}
+      date=$BUILD_TIME
 
 WORKDIR /
 
