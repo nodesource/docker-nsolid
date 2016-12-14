@@ -1,7 +1,7 @@
 .PHONY: clean cleanall download build publish
 
 ifndef NSOLID_VERSION
-	$(error NSOLID_VERSION is not set. Use: `export NSOLID_VERSION=<VERSION_NUMBER>`)
+$(error NSOLID_VERSION is not set. Use: `export NSOLID_VERSION=<VERSION_NUMBER>`)
 endif
 
 clean:
