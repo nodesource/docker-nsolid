@@ -2,12 +2,21 @@ FROM debian:jessie-slim
 MAINTAINER NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=boron
+ARG NSOLID_VERSION
+ARG BUILD_TIME
+
+LABEL vendor="NodeSource" \
+      product="N|Solid - Console" \
+      version=$NSOLID_VERSION \
+      nodejs=$NODEJS_LTS \
+      env="Production" \
+      date=$BUILD_TIME
 
 WORKDIR /
 
 # Get Dependencies
 COPY ./nsolid-bundle-${NSOLID_VERSION}/nsolid-v${NSOLID_VERSION}-${NODEJS_LTS}-linux-x64.tar.gz .
-COPY ./nsolid-bundle-${NSOLID_VERSION}/nsolid-console*.tar.gz .
+COPY ./nsolid-bundle-${NSOLID_VERSION}/nsolid-console-v*.tar.gz .
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
 
 RUN groupadd -r nsolid \

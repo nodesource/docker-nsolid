@@ -20,6 +20,8 @@ do
         --label nodesource=nsolid \
         --tag nodesource/$img:$tag \
         --build-arg NODEJS_LTS=$lts \
+        --build-arg NSOLID_VERSION=$NSOLID_VERSION \
+        --build-arg BUILD_TIME="$(date)" \
         --file=$filepath/$img.dockerfile \
         .
   done
