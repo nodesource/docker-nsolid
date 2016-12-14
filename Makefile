@@ -8,7 +8,7 @@ clean:
 	rm -rf nsolid-bundle-*
 
 cleanall: clean
-	docker rmi $$(docker images --filter "label=nodesource=nsolid" -q) -f
+	docker rmi $$(docker images --filter "label=vendor=NodeSource" -q) -f
 
 download: clean
 	mkdir nsolid-bundle-${NSOLID_VERSION}
