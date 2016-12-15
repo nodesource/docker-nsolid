@@ -19,20 +19,20 @@ If you are looking for documentation on how to use these images, checkout our th
 ### Building Images
 
 ```bash
-NSOLID_VERSION=2.0.1 make build 
+NSOLID_VERSION=2.1.0 make build 
 ```
 
 ### Publishing Images
 
 ```bash
-DOCKER_REGISTRY=username NSOLID_VERSION=2.0.1 make publish
+DOCKER_REGISTRY=username NSOLID_VERSION=2.1.0 make publish
 ```
 
 ### Cleaning up
 
 ```bash
-NSOLID_VERSION=2.0.1 make clean # removes download directories `nsolid-bundle-*`
-NSOLID_VERSION=2.0.1 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
+NSOLID_VERSION=2.1.0 make clean # removes download directories `nsolid-bundle-*`
+NSOLID_VERSION=2.1.0 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
 ```
 
 # Contributing
