@@ -24,3 +24,6 @@ build: download images
 
 publish:
 	scripts/publish.sh
+
+docs:
+	node scripts/docs.js
