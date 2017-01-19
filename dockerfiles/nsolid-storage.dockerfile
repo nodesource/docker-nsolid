@@ -42,8 +42,6 @@ RUN groupadd -r nsolid \
 
 # Cleanup
 && rm nsolid-storage*.tar.gz \
-&& rm -rf /usr/src/app/tsdb/darwin-x \
-&& rm /usr/src/app/tsdb/linux-x64/influx \
 
 # Permissions
 && chown -R nsolid:root /usr/src/app \
