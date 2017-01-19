@@ -30,7 +30,7 @@ For convenience, we provide the following docker-compose file as an example to g
 version: "2"
 services:
   storage:
-    image: nodesource/nsolid-storage:boron-2.1.0
+    image: nodesource/nsolid-storage:boron
     container_name: nsolid.storage
     ports:
       - 4000:4000
@@ -40,7 +40,7 @@ services:
     environment:
       - NODE_DEBUG=nsolid
   console:
-    image: nodesource/nsolid-console:boron-2.1.0
+    image: nodesource/nsolid-console:boron
     container_name: nsolid.console
     environment:
       - NODE_DEBUG=nsolid
@@ -48,19 +48,16 @@ services:
     links:
       - storage
     ports:
-      - 3000:3000
-  app:
-    image: nwhite/sample:latest
-    container_name: sample.app
-    environment:
-      - NODE_DEBUG=sample
-      - NSOLID_APPNAME=in_docker
-      - NSOLID_TAGS=sample,dev,simple
-      - NSOLID_COMMAND=storage:9001
-      - NSOLID_DATA=storage:9002
-      - NSOLID_BULK=storage:9003
-    ports:
-      - 4545:4545
+      - 6753:6753
+  # app:
+  #   image: nodesource/nsolid:boron
+  #   environment:
+  #     - NODE_DEBUG=nsolid
+  #     - NSOLID_APPNAME=in_docker
+  #     - NSOLID_COMMAND=storage:9001
+  #     - NSOLID_DATA=storage:9002
+  #     - NSOLID_BULK=storage:9003
+
 ```
 
 To use this, first copy and paste it into a file name `nsolid.yml`. Run `docker-compose -f nsolid.yml up`. You now have the N|Solid console running on localhost:3000!
