@@ -18,8 +18,8 @@ WORKDIR /
 COPY ./nsolid-bundle-${NSOLID_VERSION}/nsolid-v${NSOLID_VERSION}-${NODEJS_LTS}-linux-x64.tar.gz .
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
 
-RUN groupadd nsolid \
-&& useradd -M -r -g nsolid nsolid \
+RUN groupadd -g 16753 nsolid \
+&& useradd -u 16753 -g nsolid nsolid \
 
 # Updates & Upgrades
 && apt-get update \
