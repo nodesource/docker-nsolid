@@ -14,6 +14,9 @@ do
     docker tag nodesource/$img:$lts $registry/$img:$lts-$release
     docker push $registry/$img:$lts-$release
     
+    docker tag nodesource/$img:$lts $registry/$img:$lts-latest
+    docker push $registry/$img:$lts-latest
+
     if [ "$lts" == "$latest" ]; then
       docker tag nodesource/$img:$lts $registry/$img:latest
       docker push $registry/$img:latest
