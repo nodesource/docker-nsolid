@@ -19,20 +19,20 @@ If you are looking for documentation on how to use these images, checkout our th
 ### Building Images
 
 ```bash
-NSOLID_VERSION=2.1.2 make build 
+NSOLID_VERSION=2.1.3 make build 
 ```
 
 ### Publishing Images
 
 ```bash
-DOCKER_REGISTRY=username NSOLID_VERSION=2.1.2 make publish
+DOCKER_REGISTRY=username NSOLID_VERSION=2.1.3 make publish
 ```
 
 ### Cleaning up
 
 ```bash
-NSOLID_VERSION=2.1.2 make clean # removes download directories `nsolid-bundle-*`
-NSOLID_VERSION=2.1.2 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
+NSOLID_VERSION=2.1.3 make clean # removes download directories `nsolid-bundle-*`
+NSOLID_VERSION=2.1.3 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
 ```
 
 # Contributing
@@ -42,34 +42,9 @@ To submit a bug report, please create an [issue at GitHub](https://github.com/no
 If you'd like to contribute code to this project, please read the
 [CONTRIBUTING.md](https://github.com/nodesource/docker-nsolid/blob/master/CONTRIBUTING.md) document. It contains a breif overview of this repo.
 
-# Authors and Contributors
-
-<table><tbody>
-  <tr>
-    <th align="left">William Blankenship</th>
-    <td><a href="https://github.com/retrohacker">GitHub/retrohacker</a></td>
-    <td><a href="https://twitter.com/retrohack3r">Twitter/@retrohack3r</a></td>
-  </tr>
-  <tr>
-    <th align="left">Daniel Aristizabal</th>
-    <td><a href="https://github.com/cronopio">GitHub/cronopio</a></td>
-    <td><a href="https://twitter.com/cronopio2">Twitter/@cronopio2</a></td>
-  </tr>
-  <tr>
-    <th align="left">Joe McCann</th>
-    <td><a href="https://github.com/joemccann">GitHub/joemccann</a></td>
-    <td><a href="https://twitter.com/joemccann">Twitter/@joemccann</a></td>
-  </tr>
-  <tr>
-    <th align="left">Patrick Mueller</th>
-    <td><a href="https://github.com/pmuellr">GitHub/pmuellr</a></td>
-    <td><a href="https://twitter.com/pmuellr">Twitter/@pmuellr</a></td>
-  </tr>
-</tbody></table>
-
 # License & Copyright
 
-**docker-nsolid** is Copyright (c) 2016 NodeSource and licensed under the
+**docker-nsolid** is Copyright (c) 2017 NodeSource and licensed under the
 MIT license. All rights not explicitly granted in the MIT license are reserved.
 See the included [LICENSE.md](https://github.com/nodesource/docker-node/blob/master/LICENSE.md) file for more details.
 
