@@ -14,6 +14,7 @@ These Images bring the N|Solid Platform into Docker. Developed for the Enterpris
 
 # Tags and Corresponding Versions 
 [latest](https://github.com/nodesource/docker-nsolid/blob/master/dockerfiles/nsolid.dockerfile)
+[alpine](https://github.com/nodesource/docker-nsolid/blob/master/dockerfiles/alpine/nsolid.dockerfile)
 
 To fully enjoy the N|Solid experience, we recommend using all of the available images:
 
