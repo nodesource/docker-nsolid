@@ -1,12 +1,13 @@
 #!/bin/bash -ex
 
+filepath="./dockerfiles"
+
 declare -a versions=("argon" "boron")
 declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
 
-filepath="./dockerfiles"
-
 if [ "$BUILD_ALPINE" == "1" ]; then 
   filepath="$filepath/alpine" 
+  declare -a versions=("boron")
 fi
 
 for lts in "${versions[@]}"
