@@ -21,6 +21,7 @@ To fully enjoy the N|Solid experience, we recommend using all of the available i
 
 # Tags and Corresponding Versions 
 [latest](https://github.com/nodesource/docker-nsolid/blob/master/dockerfiles/nsolid-cli.dockerfile)
+[alpine](https://github.com/nodesource/docker-nsolid/blob/master/dockerfiles/alpine/nsolid-cli.dockerfile)
 
 # docker-compose support
 

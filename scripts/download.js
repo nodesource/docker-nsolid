@@ -6,6 +6,7 @@ const path = require('path')
 const fs = require('fs')
 
 const version = process.env.NSOLID_VERSION
+const distro = (process.env.BUILD_ALPINE) ? 'alpine' : 'linux';
 
 if (!version) {
   console.error("Must specify a version")
@@ -29,7 +30,7 @@ req.on('error', (e) => { throw e })
 req.end();
 
 function downloadFromData(data) {
-  let artifacts = JSON.parse(data)[version].artifacts.linux
+  let artifacts = JSON.parse(data)[version].artifacts[distro]
   
   Object.keys(artifacts).forEach(function (name) {
     https.request(url.parse(artifacts[name]), function(res){

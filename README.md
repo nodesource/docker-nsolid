@@ -18,6 +18,14 @@ If you are looking for documentation on how to use these images, checkout our th
 
 ### Building Images
 
+#### Alpine
+
+```bash
+NSOLID_VERSION=2.1.4 make alpine
+```
+
+#### Debian / Ubuntu
+
 ```bash
 NSOLID_VERSION=2.1.4 make build 
 ```
@@ -27,6 +35,13 @@ NSOLID_VERSION=2.1.4 make build
 ```bash
 DOCKER_REGISTRY=username NSOLID_VERSION=2.1.4 make publish
 ```
+
+#### Alpine
+
+```bash
+DOCKER_REGISTRY=username NSOLID_VERSION=2.1.4 make publish-alpine
+```
+
 
 ### Cleaning up
 
