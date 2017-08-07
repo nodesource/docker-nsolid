@@ -21,33 +21,33 @@ If you are looking for documentation on how to use these images, checkout our th
 #### Alpine
 
 ```bash
-NSOLID_VERSION=2.1.4 make alpine
+NSOLID_VERSION=2.3.0 make alpine
 ```
 
 #### Debian / Ubuntu
 
 ```bash
-NSOLID_VERSION=2.1.4 make build 
+NSOLID_VERSION=2.3.0 make build 
 ```
 
 ### Publishing Images
 
 ```bash
-DOCKER_REGISTRY=username NSOLID_VERSION=2.1.4 make publish
+DOCKER_REGISTRY=username NSOLID_VERSION=2.3.0 make publish
 ```
 
 #### Alpine
 
 ```bash
-DOCKER_REGISTRY=username NSOLID_VERSION=2.1.4 make publish-alpine
+DOCKER_REGISTRY=username NSOLID_VERSION=2.3.0 make publish-alpine
 ```
 
 
 ### Cleaning up
 
 ```bash
-NSOLID_VERSION=2.1.4 make clean # removes download directories `nsolid-bundle-*`
-NSOLID_VERSION=2.1.4 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
+NSOLID_VERSION=2.3.0 make clean # removes download directories `nsolid-bundle-*`
+NSOLID_VERSION=2.3.0 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
 ```
 
 # Contributing
@@ -55,7 +55,7 @@ NSOLID_VERSION=2.1.4 make cleanall # runs `make clean` and removes all docker im
 To submit a bug report, please create an [issue at GitHub](https://github.com/nodesource/docker-nsolid/issues/new).
 
 If you'd like to contribute code to this project, please read the
-[CONTRIBUTING.md](https://github.com/nodesource/docker-nsolid/blob/master/CONTRIBUTING.md) document. It contains a breif overview of this repo.
+[CONTRIBUTING.md](https://github.com/nodesource/docker-nsolid/blob/master/CONTRIBUTING.md) document. It contains a brief overview of this repo.
 
 # License & Copyright
 
