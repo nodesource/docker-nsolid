@@ -21,33 +21,33 @@ If you are looking for documentation on how to use these images, checkout our th
 #### Alpine
 
 ```bash
-NSOLID_VERSION=2.3.0 make alpine
+NSOLID_VERSION=2.3.1 make alpine
 ```
 
 #### Debian / Ubuntu
 
 ```bash
-NSOLID_VERSION=2.3.0 make build 
+NSOLID_VERSION=2.3.1 make build
 ```
 
 ### Publishing Images
 
 ```bash
-DOCKER_REGISTRY=username NSOLID_VERSION=2.3.0 make publish
+DOCKER_REGISTRY=username NSOLID_VERSION=2.3.1 make publish
 ```
 
 #### Alpine
 
 ```bash
-DOCKER_REGISTRY=username NSOLID_VERSION=2.3.0 make publish-alpine
+DOCKER_REGISTRY=username NSOLID_VERSION=2.3.1 make publish-alpine
 ```
 
 
 ### Cleaning up
 
 ```bash
-NSOLID_VERSION=2.3.0 make clean # removes download directories `nsolid-bundle-*`
-NSOLID_VERSION=2.3.0 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
+NSOLID_VERSION=2.3.1 make clean # removes download directories `nsolid-bundle-*`
+NSOLID_VERSION=2.3.1 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
 ```
 
 # Contributing
