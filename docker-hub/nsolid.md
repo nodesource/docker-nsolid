@@ -31,7 +31,7 @@ For convenience, we provide the following docker-compose file as an example to g
 version: "2"
 services:
   storage:
-    image: nodesource/nsolid-storage:boron
+    image: nodesource/nsolid-storage:boron-latest
     container_name: nsolid.storage
     ports:
       - 4000:4000
@@ -41,7 +41,7 @@ services:
     environment:
       - NODE_DEBUG=nsolid
   console:
-    image: nodesource/nsolid-console:boron
+    image: nodesource/nsolid-console:boron-latest
     container_name: nsolid.console
     environment:
       - NODE_DEBUG=nsolid
@@ -51,7 +51,7 @@ services:
     ports:
       - 6753:6753
   # app:
-  #   image: nodesource/nsolid:boron
+  #   image: nodesource/nsolid:boron-latest
   #   environment:
   #     - NODE_DEBUG=nsolid
   #     - NSOLID_APPNAME=in_docker
