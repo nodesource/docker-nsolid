@@ -61,7 +61,7 @@ services:
 
 ```
 
-To use this, first copy and paste it into a file name `nsolid.yml`. Run `docker-compose -f nsolid.yml up`. You now have the N|Solid console running on localhost:3000!
+To use this, first copy and paste it into a file name `nsolid.yml`. Run `docker-compose -f nsolid.yml up`. You now have the N|Solid console running on localhost:6753!
 
 > Note: By default, these images have the environment variable `NODE_ENV` set to `production`.
  
