@@ -11,15 +11,25 @@ if [ "$BUILD_ALPINE" == "1" ]; then
   declare -a versions=("boron-alpine")
 fi
 
+if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]]; then
+  declare -a is3="true"
+else
+  declare -a is3="false"
+fi
+
 for lts in "${versions[@]}"
 do
   for img in "${images[@]}"
   do
-    docker tag nodesource/$img:$lts $registry/$img:$lts-$release
-    docker push $registry/$img:$lts-$release
+    if [[ $is3 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
+      :
+    else
+      docker tag nodesource/$img:$lts $registry/$img:$lts-$release
+      docker push $registry/$img:$lts-$release
 
-    docker tag nodesource/$img:$lts $registry/$img:$lts-latest
-    docker push $registry/$img:$lts-latest
+      docker tag nodesource/$img:$lts $registry/$img:$lts-latest
+      docker push $registry/$img:$lts-latest
+    fi
 
     if [ "$lts" == "$latest" ]; then
       docker tag nodesource/$img:$lts $registry/$img:latest
