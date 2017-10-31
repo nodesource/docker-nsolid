@@ -13,7 +13,7 @@ fi
 
 if [ "$BUILD_ALPINE" == "1" ]; then
   filepath="$filepath/alpine"
-  declare -a versions=("boron")
+  declare -a versions=("boron" "carbon")
 fi
 
 for lts in "${versions[@]}"

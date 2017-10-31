@@ -8,7 +8,7 @@ registry=${DOCKER_REGISTRY:-'nodesource'}
 release=${NSOLID_VERSION}
 
 if [ "$BUILD_ALPINE" == "1" ]; then
-  declare -a versions=("boron-alpine")
+  declare -a versions=("boron-alpine" "carbon-alpine")
 fi
 
 if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]]; then
