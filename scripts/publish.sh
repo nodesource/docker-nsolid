@@ -3,7 +3,7 @@
 declare -a versions=("argon" "boron" "carbon")
 declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
 
-latest=${NSOLID_LTS_LATEST:-'boron'}
+latest=${NSOLID_LTS_LATEST:-'carbon'}
 registry=${DOCKER_REGISTRY:-'nodesource'}
 release=${NSOLID_VERSION}
 
