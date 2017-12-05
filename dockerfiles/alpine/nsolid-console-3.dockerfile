@@ -55,7 +55,7 @@ WORKDIR /usr/src/app
 
 ENV NODE_ENV production
 ENV NSOLID_CONSOLE_DATA_DIR /var/lib/nsolid/console/data
-ENV NSOLID_CONSOLE_LOGS_INFLUX /var/lib/nsolid/console/influxdb.log
+ENV NSOLID_CONSOLE_LOGS_INFLUX /var/log/nsolid-console/influxdb.log
 
 EXPOSE 4000 9001 9002 9003 6753
 
