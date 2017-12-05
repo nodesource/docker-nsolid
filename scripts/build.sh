@@ -27,7 +27,7 @@ do
       :
     else
       if [[ $is3 == "true" ]] && [[ $img == "nsolid-console" ]]; then
-        file="nsolid-console-3"
+        file="$img-3"
       fi
       docker build \
           --no-cache \
