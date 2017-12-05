@@ -20,11 +20,15 @@ for lts in "${versions[@]}"
 do
   for img in "${images[@]}"
   do
+    file=$img
     [[ $BUILD_ALPINE = "1" ]] && tag="$lts-alpine" || tag=$lts
 
     if [[ $is3 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
       :
     else
+      if [[ $is3 == "true" ]] && [[ $img == "nsolid-console" ]]; then
+        file="nsolid-console-3"
+      fi
       docker build \
           --no-cache \
           --label nodesource=nsolid \
@@ -32,9 +36,8 @@ do
           --build-arg NODEJS_LTS=$lts \
           --build-arg NSOLID_VERSION=$NSOLID_VERSION \
           --build-arg BUILD_TIME="$(date)" \
-          --file=$filepath/$img.dockerfile \
+          --file=$filepath/$file.dockerfile \
           .
     fi
-
   done
 done
