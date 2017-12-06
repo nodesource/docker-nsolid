@@ -42,9 +42,12 @@ RUN groupadd -g 16753 nsolid \
 && rm nsolid-console*.tar.gz \
 
 # Artifacts & Settings
-&& mkdir -p /var/lib/nsolid/console \
-&& chown -R nsolid:root /var/lib/nsolid/console \
-&& chmod -R 0770 /var/lib/nsolid/console \
+&& mkdir -p /var/lib/nsolid-console \
+&& chown -R nsolid:root /var/lib/nsolid-console \
+&& chmod -R 0770 /var/lib/nsolid-console \
+&& mkdir -p /var/log/nsolid-console \
+&& chown -R nsolid:root /var/log/nsolid-console \
+&& chmod -R 0770 /var/log/nsolid-console \
 
 # Permissions
 && chown -R nsolid:root /usr/src/app \
@@ -55,7 +58,7 @@ USER nsolid
 WORKDIR /usr/src/app
 
 ENV NODE_ENV production
-ENV NSOLID_CONSOLE_DATA_DIR /var/lib/nsolid/console/data
+ENV NSOLID_CONSOLE_DATA_DIR /var/lib/nsolid-console/data
 ENV NSOLID_CONSOLE_LOGS_INFLUX /var/log/nsolid-console/influxdb.log
 
 EXPOSE 4000 9001 9002 9003 6753
