@@ -32,8 +32,12 @@ do
     fi
 
     if [ "$lts" == "$latest" ]; then
-      docker tag nodesource/$img:$lts $registry/$img:latest
-      docker push $registry/$img:latest
+      if [[ $is3 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
+        :
+      else
+        docker tag nodesource/$img:$lts $registry/$img:latest
+        docker push $registry/$img:latest
+      fi
     fi
 
     if [ "$BUILD_ALPINE" == "1" ]; then
