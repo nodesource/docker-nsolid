@@ -16,10 +16,9 @@ To fully enjoy the N|Solid experience, we recommend using all of the available i
 
 * [nodesource/nsolid](https://hub.docker.com/r/nodesource/nsolid)
 * [nodesource/nsolid-console](https://hub.docker.com/r/nodesource/nsolid-console)
-* [nodesource/nsolid-storage](https://hub.docker.com/r/nodesource/nsolid-storage)
 * [nodesource/nsolid-cli](https://hub.docker.com/r/nodesource/nsolid-cli)
 
-# Tags and Corresponding Versions 
+# Tags and Corresponding Versions
 [latest](https://github.com/nodesource/docker-nsolid/blob/master/dockerfiles/nsolid-cli.dockerfile)
 [alpine](https://github.com/nodesource/docker-nsolid/blob/master/dockerfiles/alpine/nsolid-cli.dockerfile)
 
@@ -28,37 +27,26 @@ To fully enjoy the N|Solid experience, we recommend using all of the available i
 For convenience, we provide the following docker-compose file as an example to get started:
 
 ```yaml
-version: "2"
+version: "3"
 services:
-  storage:
-    image: nodesource/nsolid-storage:boron-latest
-    container_name: nsolid.storage
-    ports:
-      - 4000:4000
-      - 9001:9001
-      - 9002:9002
-      - 9003:9003
-    environment:
-      - NODE_DEBUG=nsolid
   console:
-    image: nodesource/nsolid-console:boron-latest
+    image: nodesource/nsolid-console:carbon-latest
     container_name: nsolid.console
     environment:
       - NODE_DEBUG=nsolid
-      - NSOLID_CONSOLE_STORAGE_URL=https://storage:4000
-    links:
-      - storage
     ports:
       - 6753:6753
+      - 9001:9001
+      - 9002:9002
+      - 9003:9003
   # app:
-  #   image: nodesource/nsolid:boron-latest
+  #   image: nodesource/nsolid:carbon-latest
   #   environment:
   #     - NODE_DEBUG=nsolid
   #     - NSOLID_APPNAME=in_docker
-  #     - NSOLID_COMMAND=storage:9001
-  #     - NSOLID_DATA=storage:9002
-  #     - NSOLID_BULK=storage:9003
-
+  #     - NSOLID_COMMAND=console:9001
+  #     - NSOLID_DATA=console:9002
+  #     - NSOLID_BULK=console:9003
 ```
 
 To use this, first copy and paste it into a file name `nsolid.yml`. Run `docker-compose -f nsolid.yml up`. You now have the N|Solid console running on localhost:6753!
