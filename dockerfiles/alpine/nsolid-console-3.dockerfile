@@ -39,8 +39,10 @@ RUN addgroup -g 16753 nsolid \
 && mkdir -p /var/lib/nsolid/console \
 && chown -R nsolid:root /var/lib/nsolid/console \
 && chmod -R 0770 /var/lib/nsolid/console \
+&& mkdir -p /var/log/nsolid-console \
+&& chown -R nsolid:root /var/log/nsolid-console \
+&& chmod -R 0770 /var/log/nsolid-console \
 
-# Permissions
 # Permissions
 && paxctl -cm /usr/local/bin/nsolid \
 && chown -R nsolid:root /usr/src/app \
