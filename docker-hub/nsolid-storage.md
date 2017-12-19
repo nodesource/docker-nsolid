@@ -1,10 +1,14 @@
-[![N|Solid](https://raw.githubusercontent.com/nodesource/docker-nsolid/master/imgs/nsolid.png)](https://nodesource.com/products/nsolid)
+[![N|Solid](https://s3.amazonaws.com/assets.nodesource.com/nsolid-logo-dark%402x.png)](https://nodesource.com/products/nsolid)
 
-# Enterprise Node. Finally.
+# N|Solid is a fully-compatible enhanced Node.js platform built for mission-critical applications.
 
-N|Solid™ is the premier Enterprise-grade Node.js® platform. It extends the capabilities of Node.js to provide increased developer productivity, protection of critical applications, and peak application performance.
+N|Solid enables organizations to build, manage, secure, and analyze Node.js applications.
 
-For more, check out the official [N|Solid home page](https://nodesource.com/products/nsolid)
+- Fully-compatible runtime installs in place of open source Node.js without any changes to application code
+
+- Get unparalleled visibility into Node.js application performance and system health with dozens of Node.js-specific metrics
+
+- Security vulnerability scanning and alerts happen in real time, not at build time, to help you keep your production apps secure
 
 # N|Solid Docker Images
 
@@ -12,7 +16,7 @@ For more, check out the official [N|Solid home page](https://nodesource.com/prod
 
 These Images bring the N|Solid Platform into Docker. Developed for the Enterprise use-case, these images are designed to be deployed and scaled independently. For a full walkthrough of how to use these images, refer to the [documentation](https://docs.nodesource.com/)
 
-# Tags and Corresponding Versions 
+# Tags and Corresponding Versions
 [latest](https://github.com/nodesource/docker-nsolid/blob/master/dockerfiles/nsolid-storage.dockerfile)
 [alpine](https://github.com/nodesource/docker-nsolid/blob/master/dockerfiles/alpine/nsolid-storage.dockerfile)
 
@@ -64,4 +68,3 @@ services:
 To use this, first copy and paste it into a file name `nsolid.yml`. Run `docker-compose -f nsolid.yml up`. You now have the N|Solid console running on localhost:6753!
 
 > Note: By default, these images have the environment variable `NODE_ENV` set to `production`.
- 

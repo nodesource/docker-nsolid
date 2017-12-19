@@ -1,10 +1,14 @@
-[![N|Solid](https://raw.githubusercontent.com/nodesource/docker-nsolid/master/imgs/nsolid.png)](https://nodesource.com/products/nsolid)
+[![N|Solid](https://s3.amazonaws.com/assets.nodesource.com/nsolid-logo-dark%402x.png)](https://nodesource.com/products/nsolid)
 
-# Enterprise Node. Finally.
+# N|Solid is a fully-compatible enhanced Node.js platform built for mission-critical applications.
 
-N|Solid™ is the premier Enterprise-grade Node.js® platform. It extends the capabilities of Node.js to provide increased developer productivity, protection of critical applications, and peak application performance.
+N|Solid enables organizations to build, manage, secure, and analyze Node.js applications.
 
-For more, check out the official [N|Solid home page](https://nodesource.com/products/nsolid)
+- Fully-compatible runtime installs in place of open source Node.js without any changes to application code
+
+- Get unparalleled visibility into Node.js application performance and system health with dozens of Node.js-specific metrics
+
+- Security vulnerability scanning and alerts happen in real time, not at build time, to help you keep your production apps secure
 
 # N|Solid Docker Images
 
