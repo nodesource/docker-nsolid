@@ -1,4 +1,4 @@
-[![N|Solid](./imgs/nsolid.png)](https://nodesource.com/products/nsolid)
+[![N|Solid](https://s3.amazonaws.com/assets.nodesource.com/nsolid-logo-dark%402x.png)](https://nodesource.com/products/nsolid)
 
 N|Solid Docker Images
 =====================
