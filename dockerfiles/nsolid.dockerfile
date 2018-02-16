@@ -30,6 +30,7 @@ RUN tar --strip-components 1 -xf nsolid*.tar.gz \
       build-essential \
       curl \
       ca-certificates \
+      openssh-server \
       git \
       lsb-release \
       python-all \
