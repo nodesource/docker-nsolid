@@ -27,7 +27,7 @@ docker run nodesource/nsolid:latest
 **N|Solid Console**
 
 ```bash
-docker run -p 6753:6753 -P nodesource/nsolid-console:latest
+docker run -P nodesource/nsolid-console:latest
 ```
 
 ### Building Images
