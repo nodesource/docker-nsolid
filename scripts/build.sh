@@ -2,7 +2,7 @@
 
 filepath="./dockerfiles"
 
-declare -a versions=("argon" "boron" "carbon")
+declare -a versions=("boron" "carbon")
 declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
 
 if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]]; then
