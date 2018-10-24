@@ -34,7 +34,7 @@ For convenience, we provide the following docker-compose file as an example to g
 version: "3"
 services:
   console:
-    image: nodesource/nsolid-console:carbon-latest
+    image: nodesource/nsolid-console:dubnium-latest
     container_name: nsolid.console
     environment:
       - NODE_DEBUG=nsolid
@@ -44,7 +44,7 @@ services:
       - 9002:9002
       - 9003:9003
   # app:
-  #   image: nodesource/nsolid:carbon-latest
+  #   image: nodesource/nsolid:dubnium-latest
   #   environment:
   #     - NODE_DEBUG=nsolid
   #     - NSOLID_APPNAME=in_docker
