@@ -1,7 +1,7 @@
 FROM alpine:3.5
 MAINTAINER NodeSource <https://nodesource.com/>
 
-ARG NODEJS_LTS=carbon
+ARG NODEJS_LTS=dubnium
 ARG NSOLID_VERSION
 ARG BUILD_TIME
 
