@@ -14,7 +14,7 @@ This repository is used to build and push the following 4 images to the Docker H
 * [nodesource/nsolid-storage](https://hub.docker.com/r/nodesource/nsolid-storage) (Version 2 only)
 * [nodesource/nsolid-cli](https://hub.docker.com/r/nodesource/nsolid-cli)
 
-If you are looking for documentation on how to use these images, checkout our the official [docs](https://docs.nodesource.com)!
+If you are looking for documentation on how to use these images, checkout our official [docs](https://docs.nodesource.com)!
 
 ### Running Images
 
