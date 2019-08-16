@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:bionic
 MAINTAINER NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=dubnium
