@@ -1,7 +1,7 @@
 FROM ubuntu:bionic
 MAINTAINER NodeSource <https://nodesource.com/>
 
-ARG NODEJS_LTS=dubnium
+ARG NODEJS_LTS=erbium
 ARG NSOLID_VERSION
 ARG BUILD_TIME
 
