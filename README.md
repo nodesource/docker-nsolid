@@ -35,33 +35,33 @@ docker run -P nodesource/nsolid-console:latest
 #### Alpine
 
 ```bash
-NSOLID_VERSION=3.4.4 make alpine
+NSOLID_VERSION=3.7.0 make alpine
 ```
 
 #### Debian / Ubuntu
 
 ```bash
-NSOLID_VERSION=3.4.4 make build
+NSOLID_VERSION=3.7.0 make build
 ```
 
 ### Publishing Images
 
 ```bash
-DOCKER_REGISTRY=username NSOLID_VERSION=3.4.4 make publish
+DOCKER_REGISTRY=username NSOLID_VERSION=3.7.0 make publish
 ```
 
 #### Alpine
 
 ```bash
-DOCKER_REGISTRY=username NSOLID_VERSION=3.4.4 make publish-alpine
+DOCKER_REGISTRY=username NSOLID_VERSION=3.7.0 make publish-alpine
 ```
 
 
 ### Cleaning up
 
 ```bash
-NSOLID_VERSION=3.4.4 make clean # removes download directories `nsolid-bundle-*`
-NSOLID_VERSION=3.4.4 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
+NSOLID_VERSION=3.7.0 make clean # removes download directories `nsolid-bundle-*`
+NSOLID_VERSION=3.7.0 make cleanall # runs `make clean` and removes all docker images with label=nodesource=nsolid
 ```
 
 # Contributing
