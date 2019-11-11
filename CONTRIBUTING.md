@@ -6,7 +6,7 @@ We appreciate any and all feedback. This document will serve as a guide to prepa
 
 # Dependencies
 
-* [Node dubnium (v10)](https://github.com/nodesource/distributions#installation-instructions)
+* [Node Erbium (v12)](https://github.com/nodesource/distributions#installation-instructions)
 * [Latest release of dante](https://github.com/retrohacker/dante)
 * Internet Access
 
