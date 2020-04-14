@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:3.11
 MAINTAINER NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=erbium
