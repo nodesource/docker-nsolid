@@ -11,7 +11,7 @@ if [ "$BUILD_ALPINE" == "1" ]; then
   declare -a versions=("dubnium-alpine" "erbium-alpine")
 fi
 
-if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]]; then
+if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]] || [[ ${NSOLID_VERSION} =~ ^4\.(.*)\.(.*) ]]; then
   declare -a is3="true"
 else
   declare -a is3="false"

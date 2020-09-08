@@ -5,7 +5,7 @@ filepath="./dockerfiles"
 declare -a versions=("dubnium" "erbium")
 declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
 
-if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]]; then
+if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]] || [[ ${NSOLID_VERSION} =~ ^4\.(.*)\.(.*) ]]; then
   declare -a is3="true"
 else
   declare -a is3="false"
