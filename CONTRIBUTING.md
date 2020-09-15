@@ -6,7 +6,7 @@ We appreciate any and all feedback. This document will serve as a guide to prepa
 
 # Dependencies
 
-* [Node erbium (v12)](https://github.com/nodesource/distributions#installation-instructions)
+* [Node fermium (v14)](https://github.com/nodesource/distributions#installation-instructions)
 * [Latest release of dante](https://github.com/retrohacker/dante)
 * Internet Access
 
