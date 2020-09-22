@@ -1,5 +1,5 @@
 FROM alpine:3.11
-MAINTAINER NodeSource <https://nodesource.com/>
+LABEL NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=erbium
 ARG NSOLID_VERSION
