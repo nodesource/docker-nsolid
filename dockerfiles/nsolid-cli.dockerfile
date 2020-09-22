@@ -1,5 +1,5 @@
-FROM debian:jessie-slim
-MAINTAINER NodeSource <https://nodesource.com/>
+FROM debian:buster-slim
+LABEL NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=erbium
 ARG NSOLID_VERSION
