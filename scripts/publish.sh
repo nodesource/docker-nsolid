@@ -12,16 +12,16 @@ if [ "$BUILD_ALPINE" == "1" ]; then
 fi
 
 if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]] || [[ ${NSOLID_VERSION} =~ ^4\.(.*)\.(.*) ]]; then
-  declare -a is3="true"
+  declare -a is4="true"
 else
-  declare -a is3="false"
+  declare -a is4="false"
 fi
 
 for lts in "${versions[@]}"
 do
   for img in "${images[@]}"
   do
-    if [[ $is3 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
+    if [[ $is4 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
       :
     else
       docker tag nodesource/$img:$lts $registry/$img:$lts-$release
@@ -32,7 +32,7 @@ do
     fi
 
     if [ "$lts" == "$latest" ]; then
-      if [[ $is3 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
+      if [[ $is4 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
         :
       else
         docker tag nodesource/$img:$lts $registry/$img:latest
@@ -41,7 +41,7 @@ do
     fi
 
     if [ "$BUILD_ALPINE" == "1" ]; then
-      if [[ $is3 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
+      if [[ $is4 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
         :
       else
         docker tag nodesource/$img:$lts $registry/$img:alpine

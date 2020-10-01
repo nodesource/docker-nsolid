@@ -1,5 +1,5 @@
 FROM ubuntu:bionic
-MAINTAINER NodeSource <https://nodesource.com/>
+LABEL NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=fermium
 ARG NSOLID_VERSION

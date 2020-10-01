@@ -6,9 +6,9 @@ declare -a versions=("dubnium" "erbium" "fermium")
 declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
 
 if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]] || [[ ${NSOLID_VERSION} =~ ^4\.(.*)\.(.*) ]]; then
-  declare -a is3="true"
+  declare -a is4="true"
 else
-  declare -a is3="false"
+  declare -a is4="false"
 fi
 
 if [ "$BUILD_ALPINE" == "1" ]; then
@@ -23,11 +23,11 @@ do
     file=$img
     [[ $BUILD_ALPINE = "1" ]] && tag="$lts-alpine" || tag=$lts
 
-    if [[ $is3 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
+    if [[ $is4 == "true" ]] && [[ $img == "nsolid-storage" ]]; then
       :
     else
-      if [[ $is3 == "true" ]] && [[ $img == "nsolid-console" ]]; then
-        file="$img-3"
+      if [[ $is4 == "true" ]] && [[ $img == "nsolid-console" ]]; then
+        file="$img-4"
       fi
       docker build \
           --no-cache \
