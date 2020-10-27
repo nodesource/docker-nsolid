@@ -1,7 +1,7 @@
 FROM ubuntu:bionic
 LABEL NodeSource <https://nodesource.com/>
 
-ARG NODEJS_LTS=erbium
+ARG NODEJS_LTS=fermium
 ARG NSOLID_VERSION
 ARG BUILD_TIME
 
