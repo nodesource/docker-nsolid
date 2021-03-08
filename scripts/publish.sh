@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-declare -a versions=("dubnium" "erbium" "fermium")
+declare -a versions=("erbium" "fermium")
 declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
 
 latest=${NSOLID_LTS_LATEST:-'fermium'}
@@ -8,7 +8,7 @@ registry=${DOCKER_REGISTRY:-'nodesource'}
 release=${NSOLID_VERSION}
 
 if [ "$BUILD_ALPINE" == "1" ]; then
-  declare -a versions=("dubnium-alpine" "erbium-alpine" "fermium-alpine")
+  declare -a versions=("erbium-alpine" "fermium-alpine")
 fi
 
 if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]] || [[ ${NSOLID_VERSION} =~ ^4\.(.*)\.(.*) ]]; then
