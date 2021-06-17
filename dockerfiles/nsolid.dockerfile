@@ -45,8 +45,6 @@ RUN tar --strip-components 1 -xf nsolid*.tar.gz \
 # dumb-init
 && chmod +x /usr/local/bin/dumb-init;
 
-USER nsolid
-
 ENV NODE_ENV production
 
 ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
