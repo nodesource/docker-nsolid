@@ -1,6 +1,9 @@
 FROM ubuntu:bionic
 LABEL NodeSource <https://nodesource.com/>
 
+RUN groupadd --gid 1000 nsolid \
+  && useradd --uid 1000 --gid nsolid --shell /bin/bash --create-home nsolid
+
 ARG NODEJS_LTS=fermium
 ARG NSOLID_VERSION
 ARG BUILD_TIME
@@ -41,6 +44,8 @@ RUN tar --strip-components 1 -xf nsolid*.tar.gz \
 
 # dumb-init
 && chmod +x /usr/local/bin/dumb-init;
+
+USER nsolid
 
 ENV NODE_ENV production
 
