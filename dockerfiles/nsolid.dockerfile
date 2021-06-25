@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 LABEL NodeSource <https://nodesource.com/>
 
 RUN groupadd --gid 1000 nsolid \
@@ -20,15 +20,15 @@ WORKDIR /
 COPY ./nsolid-bundle-*/*${NODEJS_LTS}-linux-x64*.tar.gz .
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 /usr/local/bin/dumb-init
 
-RUN tar --strip-components 1 -xf nsolid*.tar.gz \
+RUN tar -C /usr/local --strip-components 1 -xf nsolid*.tar.gz \
 && rm nsolid*.tar.gz \
 
 # Updates & Upgrades
 && apt-get update \
-&& apt-get upgrade -y --force-yes \
+&& apt-get upgrade -y --allow-downgrades --allow-remove-essential --allow-unauthenticated \
 
 # Install dependencies
-&& DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes --no-install-recommends \
+&& DEBIAN_FRONTEND=noninteractive apt-get install -y --allow-downgrades --allow-remove-essential --allow-unauthenticated --no-install-recommends \
       apt-transport-https \
       build-essential \
       curl \
