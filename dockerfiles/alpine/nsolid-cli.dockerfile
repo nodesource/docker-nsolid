@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM alpine:3.14
 LABEL NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=fermium
