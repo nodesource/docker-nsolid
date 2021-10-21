@@ -1,7 +1,7 @@
 FROM debian:buster-slim
 LABEL NodeSource <https://nodesource.com/>
 
-ARG NODEJS_LTS=fermium
+ARG NODEJS_LTS=gallium
 ARG NSOLID_VERSION
 ARG BUILD_TIME
 

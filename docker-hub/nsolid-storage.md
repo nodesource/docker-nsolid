@@ -35,7 +35,7 @@ For convenience, we provide the following docker-compose file as an example to g
 version: "2"
 services:
   storage:
-    image: nodesource/nsolid-storage:fermium-latest
+    image: nodesource/nsolid-storage:gallium-latest
     container_name: nsolid.storage
     ports:
       - 4000:4000
@@ -45,7 +45,7 @@ services:
     environment:
       - NODE_DEBUG=nsolid
   console:
-    image: nodesource/nsolid-console:fermium-latest
+    image: nodesource/nsolid-console:gallium-latest
     container_name: nsolid.console
     environment:
       - NODE_DEBUG=nsolid
@@ -55,7 +55,7 @@ services:
     ports:
       - 6753:6753
   # app:
-  #   image: nodesource/nsolid:fermium-latest
+  #   image: nodesource/nsolid:gallium-latest
   #   environment:
   #     - NODE_DEBUG=nsolid
   #     - NSOLID_APPNAME=in_docker
