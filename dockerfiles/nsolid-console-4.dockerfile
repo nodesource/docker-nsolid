@@ -1,4 +1,4 @@
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 LABEL NodeSource <https://nodesource.com/>
 
 ARG NODEJS_LTS=gallium
