@@ -4,7 +4,7 @@ LABEL NodeSource <https://nodesource.com/>
 RUN groupadd --gid 1000 nsolid \
   && useradd --uid 1000 --gid nsolid --shell /bin/bash --create-home nsolid
 
-ARG NODEJS_LTS=gallium
+ARG NODEJS_LTS=hydrogen
 ARG NSOLID_VERSION
 ARG BUILD_TIME
 
