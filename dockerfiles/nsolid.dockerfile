@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:jammy
 LABEL NodeSource <https://nodesource.com/>
 
 RUN groupadd --gid 1000 nsolid \
