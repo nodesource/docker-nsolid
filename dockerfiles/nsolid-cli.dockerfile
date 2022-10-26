@@ -1,7 +1,7 @@
 FROM debian:bullseye-slim
 LABEL NodeSource <https://nodesource.com/>
 
-ARG NODEJS_LTS=gallium
+ARG NODEJS_LTS=hydrogen
 ARG NSOLID_VERSION
 ARG BUILD_TIME
 

@@ -1,14 +1,14 @@
 #!/bin/bash -ex
 
-declare -a versions=("fermium" "gallium")
+declare -a versions=("fermium" "gallium" "hydrogen")
 declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
 
-latest=${NSOLID_LTS_LATEST:-'gallium'}
+latest=${NSOLID_LTS_LATEST:-'hydrogen'}
 registry=${DOCKER_REGISTRY:-'nodesource'}
 release=${NSOLID_VERSION}
 
 if [ "$BUILD_ALPINE" == "1" ]; then
-    declare -a versions=("fermium-alpine" "gallium-alpine")
+    declare -a versions=("fermium-alpine" "gallium-alpine" "hydrogen-alpine")
 fi
 
 if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]] || [[ ${NSOLID_VERSION} =~ ^4\.(.*)\.(.*) ]]; then
