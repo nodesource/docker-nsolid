@@ -2,8 +2,8 @@
 
 filepath="./dockerfiles"
 
-declare -a versions=("gallium" "hydrogen")
-declare -a images=("nsolid" "nsolid-console" "nsolid-storage" "nsolid-cli")
+declare -a versions=("iron" "hydrogen")
+declare -a images=("nsolid" "nsolid-console")
 
 if [[ ${NSOLID_VERSION} =~ ^3\.(.*)\.(.*) ]] || [[ ${NSOLID_VERSION} =~ ^4\.(.*)\.(.*) ]]; then
     declare -a is4="true"
@@ -13,7 +13,7 @@ fi
 
 if [ "$BUILD_ALPINE" == "1" ]; then
     filepath="$filepath/alpine"
-    declare -a versions=("gallium" "hydrogen")
+    declare -a versions=("iron" "hydrogen")
 fi
 
 for lts in "${versions[@]}"
